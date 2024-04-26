@@ -1,0 +1,449 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Smooch+Sans:wght@300&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+}
+
+
+::-webkit-scrollbar {
+    width: 14px;
+}
+  
+::-webkit-scrollbar-thumb {
+    background: rgba(var(--bs-success-rgb));
+}
+  
+::-webkit-scrollbar-thumb:hover {
+    background:rgba(var(--bs-success-rgb),0.7);
+}
+
+body{
+    min-height: 100vh;
+    display:flex;
+    flex-direction: column;
+}
+
+
+.logo {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-iteration-count: 1;
+}
+
+.logo:hover {
+  animation-name: rubberBand;
+}
+
+@keyframes rubberBand {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  30% {
+    transform: scale3d(1.25, 0.75, 1);
+  }
+
+  40% {
+    transform: scale3d(0.75, 1.25, 1);
+  }
+
+  50% {
+    transform: scale3d(1.15, 0.85, 1);
+  }
+
+  65% {
+    transform: scale3d(0.95, 1.05, 1);
+  }
+
+  75% {
+    transform: scale3d(1.05, 0.95, 1);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+
+main{
+    flex-grow: 1;
+}
+#navPrincipal{ 
+    position: fixed !important; 
+    width: 100%; 
+    z-index: 100;
+}
+.nav-text{
+    font-weight: 700;
+    font-size: 1.1rem;   
+}
+.banner{
+    max-height: 100vh;
+    overflow: hidden;
+    background-size: contain;
+    position: relative;
+}
+.banner::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 0;
+}
+.banner img{
+    width: 100%;
+    object-fit: cover;
+}
+.banner article{
+    z-index: 1;
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
+.tituloBanner {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+.subtituloBanner{
+    font-size: 2.2rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+.botonBanner{
+    font-size: 1.2rem;
+    font-weight: 700;
+
+}
+
+
+.buscador{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    text-align: center;
+    /* background-color: chocolate; */
+}
+
+.buscador h2{
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.form-buscar-libro {
+    display: flex;
+    margin: 0px 5px;
+}
+
+.form-buscar-libro .input-buscar{
+  border: 2px solid #000;
+  border-radius: 25px;
+  color: #000;
+  font-size: 1.2rem;
+  height: 50px;
+  margin: 20px 0px;
+  outline: none;
+  padding: 0px 20px;
+  width: 500px;
+}
+
+.form-buscar-libro .btn-buscar{
+  background-color: rgba(var(--bs-success-rgb), 1);
+  display: inline-block;
+  color: #000;
+  height: 50px;
+  margin: 20px 10px;
+  padding: 0 20px;
+  border-radius: 25px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border: 2px solid rgba(var(--bs-success-rgb), 1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+@media screen and (max-width: 600px) {
+    .buscador h2{
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+
+    .form-buscar-libro .input-buscar{
+        width: 100%;
+    }
+}
+
+
+.card {
+    height: 450px;
+    width: 350px;
+    margin: 45px;
+    border: none;
+    position: relative;
+    perspective: 1200px;
+    -webkit-perspective: 1200px;
+    -moz-perspective: 1200px;
+}
+  
+.card__side {
+    height: 100%;
+    -webkit-transition: all 0.8s ease;
+    transition: all 0.8s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 3px;
+    overflow: hidden;
+    -webkit-box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+}
+  
+.card__side--front {
+    background-color: #fff;
+}
+
+.card__side--front-1 img {
+    width: 100%;
+    height: inherit;
+    border-radius: 5px;
+}
+
+.card__side--back {
+    background-color: rgba(var(--bs-success-rgb), 0.75) !important;
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+    align-content: center;
+}
+
+.card__side--back-1 .text {
+    color: white;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 25px;
+
+    & a {
+        text-decoration: none;
+        color: #fff;
+    }
+}
+
+.card:hover .card__side--front-1 {
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+}
+
+.card:hover .card__side--back {
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0);
+}
+  
+.division {
+    width: 80%;
+    margin: 40px auto;
+    border: 1px solid rgba(var(--bs-success-rgb), 0.75) !important;
+}
+
+.aclamadas {
+    overflow: auto;
+    white-space: nowrap;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 30px 0px;
+}
+
+.aclamadas img{
+    height: 350px;
+    padding: 0 35px;
+}
+
+#flecha{
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        color: white;
+        cursor: pointer;
+}
+
+@media (max-width: 992px) {
+
+    .tituloBanner{
+        font-size: 2.5rem;
+    }
+    .subtituloBanner{
+        font-size: 1.5rem;
+    }
+    .botonBanner{
+        font-size: 1rem;
+    }
+    .banner{
+        height: 60vh;
+    }
+    .banner img{
+        height: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .tituloBanner{
+        margin-top: 15px;
+    }
+    .subtituloBanner{
+        display: none;
+    }
+    
+}
+
+
+/** DETALLES LIBRO **/
+
+.sinopsis {
+  background-color: #fff;
+  display: inline;
+  float: left;
+  width: 100%;
+}
+
+.sinopsis-titulo-area {
+  display: inline;
+  float: left;
+  padding: 50px 0;
+  width: 100%;
+}
+
+.sinopsis-titulo {
+  text-align: center;
+}
+
+.sinopsis-content {
+  display: inline;
+  float: left;
+  margin-top: 50px;
+  width: 100%;
+
+  & img {
+    border: none;
+    max-width: 100%;
+  }
+}
+
+.sinopsis-image {
+  display: inline;
+  float: left;
+  width: 100%;
+}
+
+.sinopsis-info {
+  display: inline;
+  float: left;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.sinopsis-info p {
+  margin-bottom: 20px;
+}
+
+/** REGISTRO / REGISTRO**/
+
+.main-login,
+.main-registro {
+  background-image: url('../img/cac-book-bg.avif');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.registro,
+.login {
+  background-color: rgba(var(--bs-success-rgb), 0.75) !important;
+  width: 75%;
+  max-width: 600px;
+  margin: 105px auto 20px auto;
+  border-radius: 5px;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* height: 90vh; */
+  font-size: 1.2rem;
+
+  & form {
+    width: 100%;
+    /* padding: 0 50px; */
+  }
+}
+
+.registro-titulo,
+.login-titulo {
+  text-align: center;
+  color: #fff;
+}
+
+.form-reg {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.registro .terminos-condiciones,
+.login .terminos-condiciones {
+  padding-top: 10px;
+  color: #fff;
+}
+
+.registro input:not(.check, .boton),
+.login input:not(.check, .boton),
+select {
+  border: 2px solid #000;
+  border-radius: 25px;
+  color: #000;
+  font-size: 1.2rem;
+  height: 35px;
+  margin: 20px 0px;
+  outline: none;
+  padding: 0px 20px;
+  width: 75%;
+}
+
+.registro input[type='submit'],
+.login input[type='submit'] {
+  background-color: rgba(var(--bs-success-rgb), 1);
+  display: inline-block;
+  color: #fff;
+  height: 50px;
+  margin: 20px 10px;
+  padding: 0 20px;
+  border-radius: 25px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border: 2px solid rgba(var(--bs-success-rgb), 1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+@media (max-width: 450px) {
+  .registro .terminos-condiciones,
+  .login .terminos-condiciones {
+    font-size: 0.6rem;
+  }
+  .registro input:not(.check, .boton),
+  .login input:not(.check, .boton),
+  select {
+    width: 100%;
+  }
+}
