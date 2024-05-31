@@ -346,7 +346,27 @@ main {
   margin-bottom: 20px;
 }
 
-/** REGISTRO / REGISTRO**/
+/** PRÓXIMAMENTE **/
+
+.card_prox {
+  height: 450px;
+  width: 350px;
+  margin: 45px;
+  border: none;
+}
+
+.card_prox__side {
+  height: 100%;
+  width: 100%;
+}
+
+.card_prox__side--front-1 img {
+  width: 100%;
+  height: inherit;
+  border-radius: 5px;
+}
+
+/** REGISTRO / REGISTRO **/
 
 .main-login,
 .main-registro {
@@ -450,5 +470,36 @@ select {
   .login input:not(.check, .boton),
   select {
     width: 100%;
+  }
+}
+
+.loader {
+  width: fit-content;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 30px;
+  color: #0000;
+  background: linear-gradient(
+      90deg,
+      rgb(var(--bs-success-rgb)) calc(50% + 0.5ch),
+      #000 0
+    )
+    right/calc(200% + 1ch) 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: l7 2s infinite steps(11);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loader:before {
+  content: 'Espere por favor...';
+}
+
+@keyframes l7 {
+  to {
+    background-position: left;
   }
 }
