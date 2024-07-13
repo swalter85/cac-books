@@ -428,18 +428,29 @@ main {
 
 .registro input:not(.check, .boton),
 .login input:not(.check, .boton),
+.registro textarea,
 select {
   border: 2px solid #000;
   border-radius: 25px;
   color: #000;
   font-size: 1.2rem;
-  height: 35px;
+  /* height: 35px; */
   margin: 20px 0px 0px 0px;
   outline: none;
   padding: 0px 20px;
   width: 75%;
+  background-color: white;
+  resize: none;
 }
 
+.registro input[type='file']::file-selector-button {
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  margin-right: 16px;
+}
+
+.registro input[type='button'],
 .registro input[type='submit'],
 .login input[type='submit'] {
   background-color: rgba(var(--bs-success-rgb), 1);
@@ -455,6 +466,11 @@ select {
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
+.registro input[type='button'] {
+  background-color: rgb(153, 21, 21);
+  border: 2px solid rgb(153, 21, 21);
+}
+
 @media (max-width: 450px) {
   .form-reg {
     & .error-info {
@@ -468,6 +484,7 @@ select {
   }
   .registro input:not(.check, .boton),
   .login input:not(.check, .boton),
+  .registro textarea,
   select {
     width: 100%;
   }

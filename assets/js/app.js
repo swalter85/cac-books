@@ -13,20 +13,43 @@ Array.from(forms).forEach(form => {
     }, false)
 })
 
+document.getElementById('uploadForm').addEventListener('submit', function (event) {
+    event.preventDefault(); // Previene el envío del formulario de forma tradicional
+    event.stopPropagation();
 
-fetch('https://books-api-production.up.railway.app/api/books')
-    .then(response => response.json())
-    .then(data => {
 
-        let container = document.getElementById("proximamente");
 
-        data.forEach(element => {
-            container.appendChild(generarHTML(element.titulo, element.imagen));
+
+    const formData = new FormData(this);
+
+    fetch('http://localhost:8080/books/libros', {
+        method: 'POST',
+        body: formData
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Respuesta del servidor:', data);
+            // alert('Datos subidos exitosamente. Ruta de la imagen: ' + data.filePath);
+            window.location.href = 'index.html';
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            alert('Hubo un error al subir los datos.');
         });
+});
+// fetch('https://books-api-production.up.railway.app/api/books')
+//     .then(response => response.json())
+//     .then(data => {
 
-        const loading = document.getElementById("loader");
-        loader.classList.add("d-none");
-    });
+//         let container = document.getElementById("proximamente");
+
+//         data.forEach(element => {
+//             container.appendChild(generarHTML(element.titulo, element.imagen));
+//         });
+
+//         const loading = document.getElementById("loader");
+//         loading.classList.add("d-none");
+//     });
 
 
 function generarHTML(titulo, imagen) {
@@ -59,3 +82,7 @@ function generarHTML(titulo, imagen) {
     return el;
 
 }
+
+document.getElementById('volver').addEventListener('click', function () {
+    window.location.href = 'index.html';
+})
